@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: servicio-zuul-server
+    
+server:
+  port: 8090
+  
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+      
+zuul:
+  routes:
+    productos:
+      #Aqui indicas el nombre del microservicio a configurar
+      service-id: servicio-productos
+      #Con esto indicas que todas las rutas del microservicio de productos se les va a poner un prefijo 
+      path: /api/productos/**
+    items:
+      service-id: servicio-items
+      path: /api/items/**
