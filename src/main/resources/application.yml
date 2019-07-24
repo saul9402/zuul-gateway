@@ -20,3 +20,11 @@ zuul:
     items:
       service-id: servicio-items
       path: /api/items/**
+#Con esto se configura un timeout para hystrix, el cual debe ser mayor que el de ribbon
+#ya que, según la documentación de spring cloud, hystrix "envuelve" a ribbon por lo tanto
+#hystrix debe esperar más tiempo que ribbon
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 20000
+#Con esto se configura un timeout para ribbon
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 10000
