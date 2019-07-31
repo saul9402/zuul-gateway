@@ -23,6 +23,13 @@ zuul:
     usuarios:
       service-id: servicio-usuarios
       path: /api/usuarios/**
+    security:
+      service-id: servicio-oauth
+      path: /api/security/**
+      #se quitan de los headers para que funcione bien
+      sensitive-headers:
+      - Cookie
+      - Set-Cookie
 #Con esto se configura un timeout para hystrix, el cual debe ser mayor que el de ribbon
 #ya que, según la documentación de spring cloud, hystrix "envuelve" a ribbon por lo tanto
 #hystrix debe esperar más tiempo que ribbon
