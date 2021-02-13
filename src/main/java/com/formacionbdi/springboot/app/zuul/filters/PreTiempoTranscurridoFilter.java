@@ -13,6 +13,9 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * Se configura un filtro para el gateway del zuul. Hay tres tipos 'pre', 'post'
  * y 'resolve'
+ * 
+ * Se heread de zuulfilter para que automaticamente spring lo registre como un
+ * filtro de zuul.
  *
  */
 @Component
@@ -20,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 public class PreTiempoTranscurridoFilter extends ZuulFilter {
 
 	/**
-	 * Si este metodo regresa true el metodo run se ejecuta
+	 * Si este metodo regresa true el metodo run se ejecuta, se puede hacer una validación cualquiera.
 	 */
 	@Override
 	public boolean shouldFilter() {
@@ -28,7 +31,7 @@ public class PreTiempoTranscurridoFilter extends ZuulFilter {
 	}
 
 	/**
-	 * Aqui es donde se lleva a cabo la lógica de lo que hará este filtro
+	 * Aqui es donde se lleva a cabo la lógica de lo que hará este filtro.
 	 */
 	@Override
 	public Object run() throws ZuulException {
@@ -45,6 +48,11 @@ public class PreTiempoTranscurridoFilter extends ZuulFilter {
 
 	/**
 	 * Aqui indicas el tipo del filtro en este caso 'pre'
+	 * 
+	 * existen tres tipos
+	 * - pre: antes de que se resuleva la ruta (antes de mandar al microservicio)
+	 * - post: despues de que se resuelva la ruta (cuando el miscroservicio termine)
+	 * - route: ya cuando se manda al servicio
 	 */
 	@Override
 	public String filterType() {
