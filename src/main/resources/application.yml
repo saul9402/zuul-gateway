@@ -9,8 +9,13 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
-      
+#Documentacion para saber como se comparte el JWT entre microservicios conocidos por Zuul
+#https://cloud.spring.io/spring-cloud-netflix/1.4.x/multi/multi__router_and_filter_zuul.html
+#https://medium.com/@Baimurzin/how-to-get-the-current-user-in-spring-cloud-microservices-c876e1c6fc65
 zuul:
+  sensitive-headers:
+      - Cookie
+      - Set-Cookie
   routes:
     productos:
       #Aqui indicas el nombre del microservicio a configurar
@@ -27,9 +32,6 @@ zuul:
       service-id: servicio-oauth
       path: /api/security/**
       #se quitan de los headers para que funcione bien
-      sensitive-headers:
-      - Cookie
-      - Set-Cookie
 #Con esto se configura un timeout para hystrix, el cual debe ser mayor que el de ribbon
 #ya que, según la documentación de spring cloud, hystrix "envuelve" a ribbon por lo tanto
 #hystrix debe esperar más tiempo que ribbon
