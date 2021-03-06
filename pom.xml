@@ -78,6 +78,13 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-zipkin</artifactId>
 		</dependency>
+
+<!-- 		Por el solo hecho de tener la dependencia la traza de los -->
+<!-- 		microservicios se va a mandar a RabbitMQ -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
