@@ -22,27 +22,15 @@ zuul:
       service-id: servicio-productos
       #Con esto indicas que todas las rutas del microservicio de productos se les va a poner un prefijo 
       path: /api/productos/**
-      sensitive-headers:
-        - Cookie
-        - Set-Cookie
     items:
       service-id: servicio-items
       path: /api/items/**
-      sensitive-headers:
-        - Cookie
-        - Set-Cookie
     usuarios:
       service-id: servicio-usuarios
       path: /api/usuarios/**
-      sensitive-headers:
-        - Cookie
-        - Set-Cookie
     security:
       service-id: servicio-oauth
       path: /api/security/**
-      sensitive-headers:
-        - Cookie
-        - Set-Cookie
     ignored-services: "*"
       #se quitan de los headers para que funcione bien
 #Con esto se configura un timeout para hystrix, el cual debe ser mayor que el de ribbon
