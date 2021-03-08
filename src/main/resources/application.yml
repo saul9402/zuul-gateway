@@ -13,7 +13,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://eureka-server:8761/eureka
 #Documentacion para saber como se comparte el JWT entre microservicios conocidos por Zuul
 #https://cloud.spring.io/spring-cloud-netflix/1.4.x/multi/multi__router_and_filter_zuul.html
 #https://medium.com/@Baimurzin/how-to-get-the-current-user-in-spring-cloud-microservices-c876e1c6fc65
@@ -41,8 +41,8 @@ zuul:
 #Con esto se configura un timeout para hystrix, el cual debe ser mayor que el de ribbon
 #ya que, según la documentación de spring cloud, hystrix "envuelve" a ribbon por lo tanto
 #hystrix debe esperar más tiempo que ribbon
-hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 20000
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
 #Con esto se configura un timeout para ribbon
 ribbon:
-  ConnectTimeout: 3000
-  ReadTimeout: 10000
+  ConnectTimeout: 9000
+  ReadTimeout: 30000
